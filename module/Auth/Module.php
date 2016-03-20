@@ -7,7 +7,6 @@
  */
 
 namespace Auth;
-
 /**
  * Description of Module
  *
