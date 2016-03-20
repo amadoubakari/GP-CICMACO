@@ -1,0 +1,81 @@
+<div>
+    <?php
+    foreach ($evenements as $event) {
+
+       
+        echo '<label>EVENEMENT : </label>&nbsp;' . $event['type'] . '<br>';
+        echo '<label>Concerne : </label>&nbsp;' . $event['idPersonnel'] . '<br>';
+        echo '<label>A lieu le : </label>&nbsp;' . $event['dateDebut'] . '<br>';
+        
+        echo '<article>
+        <div class="post-quote">
+            <blockquote>
+                <i class="icon-quote-left"></i> Lorem ipsum dolor sit amet, ei quod constituto qui. Summo labores expetendis ad quo, lorem luptatum et vis. No qui vidisse signiferumque...
+            </blockquote>
+        </div>
+        <div class="bottom-article">';
+        echo '<ul class="meta-post">
+                <li><i class="icon-calendar"></i><a href="#" data-toggle="modal" data-target="#myModal"> Details</a></li>
+                <li><i class="icon-user"></i><a href="#"> Anniversaire</a></li>
+                <li><i class="icon-folder-open"></i><a href="#"> SMS</a></li>
+                <li><i class="icon-comments"></i><a href="#">Commentaires</a></li>
+            </ul>
+        </div>
+    </article>
+</div>';
+
+
+
+
+     
+    }
+    ?>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav>
+    <ul class="pagination pagination-sm">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>

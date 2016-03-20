@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<meta charset="UTF-8">
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/mysql-icone.png'))
+        ->prependStylesheet($this->basePath('customer/right/css/style.css'))
+?>
+<div>
+    <br>
+    <aside class="right-sidebar">
+        <div class="widget">
+            <h5 class="widgetheading" style="font-weight: bold; color: #80C8FF">Statistiques</h5>
+            <ul class="cat">
+                <li><i class="glyphicon glyphicon-list"></i><a href="<?php echo $this->url('personnel/default', array('controller' => 'export', 'action' => 'listepersonnels')); ?>">&nbsp;Télécharger la liste de personnels</a></li>
+                <li><i class="glyphicon glyphicon-file"></i><a href="<?php echo $this->url('personnel/default', array('controller' => 'export', 'action' => 'modele')); ?>">&nbsp;Télécharger le spécimen du fichier CICM-ACO</a></li>
+            </ul>
+        </div>
+        <div class="widget">
+            <h5 class="widgetheading" style="font-weight: bold; color: #80C8FF">Les événements les plus récents</h5>
+            <div id="loading" style="display: none">hvkj hjtgvg</div>
+            <div id="evenements">
+            </div>
+        </div> 
+        <div class="widget">
+            <h5 class="widgetheading" style="font-weight: bold; color: #80C8FF">Les raccourcis</h5>
+            <ul class="tags">
+                <li><a href="<?php echo $this->url('personnel/default', array('controller' => 'personnel', 'action' => 'list')); ?>">Personnels</a></li>
+                <li><a href="#">Evenements</a></li>
+                <li><a href="#">Galerie</a></li>
+                <li><a href="#">Appendices</a></li>
+                <li><a href="#">Accueil</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+<script>
+    $(document).ready(
+            function() {
+
+                $().ajaxStart(function() {
+                    $('#loading').show('now', 1000).html('bonsoir');
+                });
+
+                $().ajaxStop(function() {
+                    $('#loading').hide();
+                });
+                setInterval(
+                        $.ajax({
+                            type: 'POST',
+                            url: "http://localhost/gp-cicm/public/Evenement/EventAjax/list",
+                            //data: "",
+                            //data: "nom" + $('#bonjour').val(),
+                            dataType: 'json',
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                alert("Je ne suis pas malade");
+                            },
+                            beforeSend: function() {
+                                // $('#evenements').append('').fadeIn('slow');
+                            },
+                            success: function(reponse) {
+                                $.each(reponse, function(attribut, value) {
+                                    $.each(value, function() {
+                                        $('#evenements').append('<div class="col-lg-2"><img class="img-circle" src="<?php echo $this->basePath('documents/photos/'); ?>' + this.photo + '" alt="" style="width: 40px; height: 50px" /></div><div class="col-lg-10"><h6><b>' + this.Type + ' (' + this.nom + ' ' + this.prenom + ')</b></h6><ul style="margin-left: 1px; color: #80C8FF" ><li>Debut : ' + this.dateDebut + '</li><li>Fin : ' + this.dateFin + '</li></ul></div>' + this.description + '</div><hr>'
+                                                );
+                                    });
+//                            $region.append('<option value="' + attribut + '">' + attribut + '</option>');
+                                });
+                            }
+                        }), 5000)
+            });
+</script>

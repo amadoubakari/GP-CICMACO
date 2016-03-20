@@ -1,0 +1,178 @@
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logo/marie.png'))
+        ->prependStylesheet($this->basePath('bootstrap/css/style.css'))
+        ->prependStylesheet($this->basePath('css/customer.css'))
+        ->prependStylesheet($this->basePath('bootstrap/css/bootstrap-theme.min.css'))
+        ->prependStylesheet($this->basePath('bootstrap/css/bootstrap.min.css'))
+        ->prependStylesheet($this->basePath('bootstrap/css/bootstrap.css'))
+        ->prependStylesheet($this->basePath('customer/header/css/header.css'))
+        ->prependStylesheet($this->basePath('customer/header/css/cookie-font.css'))
+        ->prependStylesheet($this->basePath('customer/font/css/css_font-awesome.min.css'))
+?>
+
+<!-- Scripts -->
+<?php
+echo $this->headScript()
+        ->prependFile($this->basePath('bootstrap/js/bootstrap.min.js'))
+        ->prependFile($this->basePath('bootstrap/js/jquery-2.1.4.min.js'))
+        ->prependFile($this->basePath('bootstrap/js/bootstrap.js'))
+        ->prependFile($this->basePath('bootstrap/js/html5shiv.min.js'))
+        ->prependFile($this->basePath('bootstrap/js/respond.js'))
+;
+?>
+<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">-->
+<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+<!--<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">-->
+<style>
+    .dropdown-submenu{position:relative;}
+    .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+    .dropdown-submenu:hover>.dropdown-menu{display:block;}
+    .dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+    .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+    .blue{color:#1D38FC}
+    .green{color:#0EC929}
+    .red{color:#FF0000}
+    .orange{color:#ffe100}
+</style>
+<div>
+    <div class="row" style="margin-left: 5px; margin-right: 5px; margin-bottom: 0;background-color: white">
+        <div class="col-lg-2">
+            <img src="<?php echo $this->basePath('img/logo/marie.jpg'); ?>" alt=""
+                 style="width: 120px; height: 150px; margin-top: 15px" />
+        </div>
+        <div class="col-lg-8">
+            <div class="row" style="height: 50px">
+
+            </div>
+            <div class="row">
+                <div class="text-center title-customer">
+                    <h3 style="font-family: lora; font: normal 45px 'Cookie', cursive;"> <span class="text-center title" style="color: #428bca">G</span>estionnaire de <span class="text-center" style="color: #428bca">P</span>ersonnels du <span class="text-center" style="color: #428bca">C</span>oeur <span class="text-center" style="color: #428bca">I</span>mmaculé <span class="text-center" style="color: #428bca">M</span>arie</h3:>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <img src="<?php echo $this->basePath('img/logo/logocicmaoc.png'); ?>" alt=""
+                 style="width: 120px; height: 150px; margin-top: 15px" />
+        </div>
+    </div>
+    <div>
+        <nav class="navbar navbar-inverse">
+            <div class="col-lg-8">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand hidden-md hidden-lg" href="#">Menu</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu" style="margin-bottom: 0px;">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown"> 
+                            <a  href="<?php echo $this->url('personnel/default', array('controller' => 'personnel', 'action' => 'accueil')); ?>"><span class="glyphicon glyphicon-home">&nbsp;Accueil</span></a>
+                        </li>
+
+                        <li class="dropdown"> 
+                            <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user">&nbsp;Personnels</span><b class="caret"></b></a>
+                            <ul class="dropdown-menu jqueryFadeIn">
+                                <li class="dropdown-header">Personnels</li>
+                                <li><a href="<?php echo $this->url('personnel/default', array('controller' => 'personnel', 'action' => 'list')); ?>"><span class="glyphicon glyphicon-list">&nbsp;Afficher tous les personnels</span></a></li>
+                                <?php
+                                if (isset($_SESSION['connected']) == TRUE) {
+                                    if ($_SESSION['profil'] == "ADMIN") {
+                                        echo '
+                                         <li class="divider"></li>
+                                         <li class="dropdown-header"><span class="glyphicon"><img style="width:20px; height: 20px" src="' . $this->basePath('img/icons/pretre (3).png') . '">&nbsp;Prêtres</span></li>
+                                         <li><a href="' . $this->url('personnel/default', array('controller' => 'personnel', 'action' => 'listpretre')) . '"><span class="glyphicon glyphicon-list">&nbsp;Afficher tous les pr&ecirc;tres</span></a></li>
+                                         <li><a href="' . $this->url('personnel/default', array('controller' => 'personnel', 'action' => 'add')) . '"><span class="glyphicon"><img style="width:20px; height: 20px" src="' . $this->basePath('img/icons/user_add.png') . '">&nbsp;Ajouter nouveau pr&ecirc;tre</span> </a></li>        
+                                         <li class="divider"></li>
+                                         <li class="dropdown-header"><span class="glyphicon glyphicon-education">&nbsp;Etudiants</span></li>
+                                         <li><a href="' . $this->url('personnel/default', array('controller' => 'personnel', 'action' => 'listetudiant')) . '"><span class="glyphicon glyphicon-user">&nbsp;Liste des étudiants</span></a></li>
+                                         <li><a href="' . $this->url('personnel/default', array('controller' => 'personnel', 'action' => 'addetudiant')) . '"><span class="glyphicon"><img style="width:20px; height: 20px" src="' . $this->basePath('img/icons/user_add.png') . '">&nbsp;Ajouter nouvel étudiant</span></a></li>
+                                         <li class="dropdown-header"><span class="glyphicon glyphicon-education">&nbsp;Fraternité</span></li>
+                                         <li><a href="' . $this->url('fraternite/default', array('controller' => 'fraternite', 'action' => 'add')) . '"><span class="glyphicon glyphicon-user">&nbsp;Ajouter une fraternité</span></a></li>
+                                         <li class="dropdown-submenu">
+                                             <a data-toggle="dropdown" class="dropdown-header" tabindex="-1" href="#"><span class="glyphicon glyphicon-book">&nbsp;Documents</span></a>
+                                             <ul class="dropdown-menu">
+                                                 <li><a href="#"><span class="glyphicon glyphicon-file blue"></span>&nbsp; Documents Appendices</a></li>  
+                                                 <li><a href="' . $this->url('document/default', array('controller' => 'document', 'action' => 'index')) . '"><span class="glyphicon glyphicon-file blue"></span>&nbsp; Afficher tous les documents</a></li>  
+                                                 <li><a href="' . $this->url('document/default', array('controller' => 'document', 'action' => 'add')) . '"><span class="glyphicon glyphicon-file blue"></span>&nbsp; Ajouter Document</a></li>
+                                             </ul>
+                                         </li>';
+                                    } else {
+                                        
+                                    }
+                                }
+                                ?>                               
+                            </ul>
+                        </li>      
+
+                        <li class="dropdown"> 
+                            <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-calendar">&nbsp;Evénements</span><b class="caret"></b></a>
+                            <ul class="dropdown-menu jqueryFadeIn">
+                                <li class="dropdown-header">Evénements</li>
+                                <li><a href="<?php echo $this->url('evenement/default', array('controller' => 'evenement', 'action' => 'index')); ?>"><span class="glyphicon glyphicon glyphicon-pencil">&nbsp;Lister les évéments</span></a></li>
+                                <li><a href="<?php echo $this->url('evenement/default', array('controller' => 'evenement', 'action' => 'add')); ?>"><span class="glyphicon glyphicon-list">&nbsp;Ajouter un événement</span></a></li>
+                                <li class="dropdown-header">Annonces</li>
+                                <li><a href="#"><span class="glyphicon glyphicon-list">&nbsp;Lister les annonces</span></a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon glyphicon-pencil">&nbsp; Ajouter une annonce</span></a></li>
+                            </ul>
+                        </li>
+                        <?php
+                        if (isset($_SESSION ['connected']) == TRUE) {
+                            
+                        }
+                        ?>
+                        <li class="dropdown"> 
+                            <a href="#"><span class="glyphicon glyphicon-picture">&nbsp;Galerie</span></a>
+                        </li>
+                        <li class="dropdown"> 
+                            <a  href="<?php echo $this->url('setting/default', array('controller' => 'setting', 'action' => 'setting')); ?>"><span class="glyphicon glyphicon-cog">&nbsp;Paramétrages</span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#"><b
+                                    class="caret right"></b></a>
+                            <ul class="dropdown-menu gly">
+                                <?php
+                                if (isset($_SESSION ['personnel'])) {
+                                    echo '<li class="dropdown-submenu">
+                                            <a data-toggle="dropdown" class="dropdown-header" tabindex="-1" href="#"><span class="glyphicon glyphicon-user">&nbsp;Mon profil</span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="' . $this->url('auth/default', array('controller' => 'profil', 'action' => 'changerpassword', 'id' => $_SESSION ['personnel']->getIdPersonnel())) . '"><span class="glyphicon glyphicon-file"></span>&nbsp; Changer mot de passe</a></li>  
+                                                <li><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp; Paramètres</a></li>
+                                            </ul>
+                                            </li>';
+                                } else {
+                                    
+                                }
+                                ?>    
+                            </ul>                         
+                        </li>                     
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <?php
+                if (isset($_SESSION['personnel'])) {
+                    echo '<p style="color: white; padding-top: 12px; padding-right: 0">Bienvenu <b class="text-warning"> ' . $_SESSION['personnel']->getNom() . ' ' . $_SESSION['personnel']->getPrenom() . '<a href="' . $this->url('auth/default', array('controller' => 'login', 'action' => 'logout')) . '">  | Déconnexion</a></b></p>';
+                    //session_destroy();
+                    //echo $_SESSION['ecole']->getNom();
+                }
+                ?>
+            </div>
+
+        </nav> 
+    </div>
+</div>		
+<script>
+    $(function() {
+        // Affichage du sous menu en douceur
+        jQuery('ul.nav li.dropdown').hover(function() {
+            jQuery(this).find('.jqueryFadeIn').stop(true, true).delay(200).fadeIn();
+        }, function() {
+            jQuery(this).find('.jqueryFadeIn').stop(true, true).delay(200).fadeOut();
+        });
+
+    });
+</script>

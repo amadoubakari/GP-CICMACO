@@ -1,0 +1,49 @@
+<?php
+echo $this->headScript()
+        ->prependFile($this->basePath('bootstrap/js/bootstrap.min.js'))
+        ->prependFile($this->basePath('bootstrap/js/jquery.min.js'))
+        ->prependFile($this->basePath('js/jQuery1.12.0.js'));
+?>
+
+<div class="col-lg-4 col-lg-offset-4 aligncenter" style="border: 2px solid #CBE6F4;background-color: white">
+    <form class="form-signin" method="POST">   
+        <!--        <h2 class="form-signin-heading text-center">Authentification</h2>-->
+        <br><br>
+        <div class="text-center">
+            <img src="<?php echo $this->basePath('img/logo/logocicmaoc.png'); ?>" alt=""
+                 style="width: 120px; height: 150px; margin-top: 15px" /><br><br>
+        </div>
+        <div>
+            <input type="text" value="<?php echo $login; ?>" class="form-control" name="login" placeholder="login" required="true" autofocus="" />
+        </div><br>  
+        <div>
+            <input type="password" value="<?php echo $password; ?>" class="form-control" name="password" placeholder="Password" required="true"/> 
+        </div>  
+        <div>
+            <label class="checkbox">
+                <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe" style="margin-left: 5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remember me
+            </label> 
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-warning" name="send" id="send" data-loading-text="Connexion ...">&nbsp;Login <span class="glyphicon glyphicon-log-in"></span></button>
+            </div> 
+            <div id="loader">
+            </div><br><br>
+        </div>
+        <div class="col-lg-offset-2">
+            <p class="text-danger"> <?php echo $msg; ?></p>
+        </div><br><br>
+    </form>
+</div>
+<script>
+    $(document).ready(
+            function() {
+                $('#send').mousedown(
+                        function() {
+                            $('#loader').append('<img src="<?php echo $this->basePath('img/loader.gif'); ?>">').fadeIn('');
+                        });
+            }
+    );
+</script>

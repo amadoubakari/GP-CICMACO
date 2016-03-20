@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<meta charset="UTF-8">
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logo/marie.png'))
+        ->prependStylesheet($this->basePath('customer/date/css/style.css'))
+        ->prependStylesheet($this->basePath('customer/date/css/bootstrap-select'))
+        ->prependStylesheet($this->basePath('customer/date/css/bootstrap-select.min.css'))
+        ->prependStylesheet($this->basePath('customer/date/css/jquery.datetimepicker.css'))
+        ->prependStylesheet('http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
+?>
+
+<!-- Scripts -->
+<?php
+echo $this->headScript()
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.full.min.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.full.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.min.js'))
+        ->prependFile($this->basePath('customer/date/js/bootstrap-select.js'))
+;
+?>
+<div>
+    <div>
+        <form class="form-horizontal col-lg-12" method="POST" enctype="multipart/form-data" style="border: 2px solid #CBE6F4;background-color: white">
+            <br/>
+            <div class="form-group">
+                <label for="type" class="col-sm-3 control-label">Type Evenement:</label>
+                <div class="col-sm-8">
+                    <select class="form-control col-sm-8" id="type" name="type" title="Type evenement" required="true">
+                        <option value="" style="color: deepskyblue">-- Sélectionner le type d evenement --</option>
+                        <option value="Saint-Patron" style="color: deepskyblue">&nbsp;&nbsp; Saint patron</option>
+                        <option value="Rendez-vous" style="color: deepskyblue">&nbsp;&nbsp; Rendez vous</option>
+                        <option value="Réunion" style="color: deepskyblue">&nbsp; &nbsp;Réunion</option>
+                        <option value="Vacances" style="color: deepskyblue">&nbsp;&nbsp; Vacances</option>
+                    </select>
+                </div>
+            </div>
+           <div class="form-group">
+                <label for="idPersonnel" class="col-sm-3 control-label">Personnel:</label>
+                <div class="col-sm-5">
+                    <select class="form-control col-sm-8" id="idPersonnel" name="idPersonnel" title="idPersonnel" required="true">
+                        <option value="" style="color: deepskyblue">-- Sélectionner le concerné --</option>
+                        <?php
+                        foreach ($personnels as $personne) {
+                            echo '<option value="' . $personne->getIdPersonnel() . '" style="color: deepskyblue"> &nbsp;' . $personne->getNom() . '   ' . $personne->getPrenom() . ' </option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="col-sm-3 control-label">Description :</label>
+                <div class="col-sm-8">
+                    <input type="text" name="description" class="form-control" id="description" title="description" placeholder="description" required="false">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateDebut" class="col-sm-3 control-label">Date Debut :</label>
+                <div class='input-group date col-lg-7' >
+                    <input type='date' class="form-control"  id='dateDebut' name="dateDebut"  placeholder="date debut" style="margin-left: 3px" title="Date debut" required="true"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateFin" class="col-sm-3 control-label">Date Fin :</label>
+                <div class='input-group date col-lg-7' >
+                    <input type='date' class="form-control"  id='dateFin' name="dateFin"  placeholder="date Fin" style="margin-left: 3px" title="Date debut" required="true"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="row col-sm-offset-2">
+                <div class="col-sm-2">
+                    <button type="submit" name="submit" class="btn btn-default ">Enregistrer</button>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-sm-2" style="margin-left: 20px">
+                    <button type="cancel" name="cancel" class="btn btn-default " >Annuler</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $('.selectpicker').selectpicker();
+</script>
+<script type="text/javascript">
+    $(function() {
+        $('#dateDebut').datetimepicker({
+            locale: 'ru',
+            lang: 'en',
+            //timepicker: false,
+            format: 'Y-m-d',
+            //formatDate: 'Y/m/d',
+            // minDate: '-1970/01/02', // yesterday is minimum date
+            //maxDate: '+1970/01/02' // and tommorow is maximum date calendar
+        });
+        $('#dateFin').datetimepicker({
+            locale: 'ru',
+            lang: 'en',
+            //timepicker: false,
+            format: 'Y-m-d',
+            //formatDate: 'Y/m/d',
+            // minDate: '-1970/01/02', // yesterday is minimum date
+            //maxDate: '+1970/01/02' // and tommorow is maximum date calendar
+        });
+
+    });
+</script>
+

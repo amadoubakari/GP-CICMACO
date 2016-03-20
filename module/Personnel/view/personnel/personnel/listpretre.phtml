@@ -1,0 +1,82 @@
+<div>
+    <?php
+    foreach ($pretres as $pretre) {
+
+        echo '<div style="background-color: white; padding-left: 5px; padding-top: 10px; margin-top: 2px; padding-right: 5px">';
+        echo '<div class="row">';
+        echo '<div class = "col-lg-2">';
+        echo '<img src = "' . $this->basePath('documents/photos/' . $pretre->getPhoto()) . '" class = "img-thumbnail" style = "width: 100px;height: 100px" alt = "Cinque Terre"></div>';
+        echo '<div class = "col-lg-7">';
+        echo '<label>Nom :</label>&nbsp;' . $pretre->getNom() . '<br>';
+        echo '<label>Prénom : </label>&nbsp;' . $pretre->getPrenom() . '<br>';
+        echo '<label>Statut :</label>&nbsp;' . $pretre->getTypePersonnel() . '  [' . $pretre->getIdService() . '  ' . $pretre->getEcole() . '  ' . $pretre->getFiliere() . ']<br>';
+        echo '<label>Domicilié à : </label>&nbsp;' . $pretre->getDomicile() . '<br></div></div>';
+        echo '<article>
+        <div class="post-quote">
+            <blockquote>
+                <i class="icon-quote-left"></i>' . $pretre->getNom() . '  ' . $pretre->getPrenom() . '  Née le ' . $pretre->getDateDeNaissance()->format('d-m-Y') . '
+              à ' . $pretre->getLieuDeNaissance() . ' et domicilié à ' . $pretre->getDomicile() . ' . Fils de ' . $pretre->getNomPere() . ' et de ' . $pretre->getNomMere(). '.      
+
+
+
+            </blockquote>
+        </div>
+        <div class="bottom-article">';
+        echo '<ul class="meta-post">
+                <li><i class="icon-calendar"></i><a href="#" data-toggle="modal" data-target="#' . $pretre->getNom() . '"> Details</a></li>
+                <li><i class="icon-user"></i><a href="#"> Anniversaire</a></li>
+                <li><i class="glyphicon glyphicon-envelope"></i><a href="#"> SMS</a></li>
+                <li><i class="glyphicon glyphicon-pencil"></i><a href="#">Modifier</a></li>
+                <li><i class="glyphicon glyphicon-comment"></i><a href="#">Commentaires</a></li>                
+               <form class="navbar-form pull-right" method="POST" >
+               <input type="hidden" name="idPersonnel" value="' . $pretre->getIdPersonnel() . '">
+               <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-download-alt">Télécharger CV</span> </button>
+            </form>                
+            </ul>
+        </div>
+    </article>
+</div>
+        <div class="modal fade" id="' . $pretre->getNom() . '" tabindex="-1" role="dialog" aria-labelledby="' . $pretre->getNom() . 'Label">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="' . $pretre->getNom() . 'Label">' . $pretre->getNom() . ' ' . $pretre->getPrenom() . '</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="' . $this->basePath('documents/photos/' . $pretre->getPhoto()) . '" width="450"
+                        height="250"></iframe><br>
+                <label>Nom :</label>&nbsp;' . $pretre->getNom() . '<br>
+                <label>Prénom : </label>&nbsp;' . $pretre->getPrenom() . '<br>
+                <label>Statut :</label>&nbsp;' . $pretre->getTypePersonnel() . '  [' . $pretre->getIdService() . '  ' . $pretre->getEcole() . '  ' . $pretre->getFiliere() . ']<br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="">Download</button>
+            </div>
+        </div>
+    </div>
+</div>';
+    }
+    ?>
+</div>
+
+<nav>
+    <ul class="pagination pagination-sm">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,13 @@
+/* The company logo */
+
+.title-customer h3{
+	color:  #2C2C2C;
+	font: normal 0px 'Cookie', cursive;
+	margin: 0;
+}
+
+.title-customer h3 span{
+	color:  #5383d3;
+}
+
+/* Footer links */

@@ -1,0 +1,120 @@
+<?php
+echo $this->doctype();
+?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('CICM-ACO' . $this->translate(''))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logo/marie.png'))
+                ->prependStylesheet($this->basePath('bootstrap/css/style.css'))
+                ->prependStylesheet($this->basePath('bootstrap/css/bootstrap-theme.min.css'))
+                ->prependStylesheet($this->basePath('bootstrap/css/bootstrap.min.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath('bootstrap/js/bootstrap.min.js'))
+                ->prependFile($this->basePath('bootstrap/js/jquery.min.js'))
+                ->prependFile($this->basePath('js/jQuery1.12.0.js'))
+                ->prependFile($this->basePath('bootstrap/js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('bootstrap/js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
+        ?>
+
+    </head>
+    <body>
+        <div class="container">
+            <?php echo $this->render('layout/header.phtml'); ?>
+        </div>
+        <div class="container">
+            <div class="col-lg-2">
+                <nav class="navbar navbar-inverse sidebar" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Configurations</a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Secteur <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
+                                    <ul class="dropdown-menu forAnimate" role="menu">
+                                        <li><a href="#">List de pays</a></li>
+                                        <li><a href="#">Ajouter pays </a></li>
+                                    </ul>
+                                </li> 
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Diocèse <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
+                                    <ul class="dropdown-menu forAnimate" role="menu">
+                                        <li><a href="#" ><span class="glyphicon glyphicon-list">List de pays</span></a></li>
+                                        <li><a href="#">Ajouter pays </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paroisse <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
+                                    <ul class="dropdown-menu forAnimate" role="menu">
+                                        <li><a href="#">List de pays</a></li>
+                                        <li><a href="#">Ajouter pays </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pays <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-flag"></span></a>
+                                    <ul class="dropdown-menu forAnimate" role="menu">
+                                        <li><a href="#" ><span class="glyphicon glyphicon-list">&nbsp;List de pays</span></a></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-plus">&nbsp;Ajouter pays</span></a></li>
+                                    </ul>
+                                </li>                    
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Paroisse <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+                                    <ul class="dropdown-menu forAnimate" role="menu">
+                                        <li><a href="#"><span>&nbsp;List</span></a></li>
+                                        <li><a href="#"><span>&nbsp;Ajouter paroisse</span></a></li>
+                                        <li><a href="#"><span>&nbsp;Lister les services</span></a></li>
+                                        <li><a href="#"><span>&nbsp;Ajouter service</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ecoles <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-education"></span></a>
+                                    <ul class="dropdown-menu forAnimate" role="menu">
+                                        <li><a href="#">List</a></li>
+                                        <li><a href="#">Ajouter école</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-10">
+                <?php echo $this->content; ?>
+            </div>
+        </div>        
+        <hr class="container">
+        <div class="container">
+            <?php echo $this->render('layout/footer.phtml'); ?>
+            <hr>
+            <footer class="container">
+                <p style="color: black">&copy; <?php echo date('Y') ?> by CICM-ACO <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

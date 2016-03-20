@@ -1,0 +1,57 @@
+<?php
+echo $this->headScript()
+        ->prependFile($this->basePath('js/customer.js'))
+        ->prependFile($this->basePath('js/jQuery1.12.0.js'))
+
+;
+?>
+<div>
+    <br><br>
+    <div class="well well-sm">
+        <form class="form-horizontal" method="post">
+            <fieldset>
+                <legend class="text-center header " style="font-weight: bold">Contacter nous</legend>
+
+                <div class="form-group">
+                    <span class="col-md-1 col-md-offset-1 text-center"><i class="glyphicon glyphicon-user blue"></i></span>
+                    <div class="col-md-8">
+                        <input id="fname" name="name" type="text" placeholder="Nom" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="col-md-1 col-md-offset-1 text-center"><i class="glyphicon glyphicon-user blue"></i></span>
+                    <div class="col-md-8">
+                        <input id="lname" name="name" type="text" placeholder="Prénom" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <span class="col-md-1 col-md-offset-1 text-center"><i class="glyphicon glyphicon-envelope blue"></i></span>
+                    <div class="col-md-8">
+                        <input id="email" name="email" type="text" placeholder="Adresse email" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <span class="col-md-1 col-md-offset-1 text-center"><i class="glyphicon glyphicon-phone blue"></i></span>
+                    <div class="col-md-8">
+                        <input id="phone" name="phone" type="text" placeholder="Téléphone" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <span class="col-md-1 col-md-offset-1 text-center"><i class="glyphicon glyphicon-edit blue"></i></span>
+                    <div class="col-md-8">
+                        <textarea class="form-control" id="message" name="message" placeholder="Saisissez votre message à envoyer ici !" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-warning" id="send">Envoyer <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/Schoolfiles-logo.png'))
+        ->prependStylesheet($this->basePath('customer/footer/css/demo.css'))
+        ->prependStylesheet($this->basePath('customer/footer/css/footer.css'))
+?>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+<div>  
+    <!-- The content of your page would go here. -->
+    <div class="footer-distributed" style="margin: 0; padding: 55px">
+        <div class="footer-left">
+            <h3>CICM<span>ACO</span></h3>
+            <p class="footer-links">
+                <a href="#">Accueil</a>                    ·                   ·
+                <a href="#">R&eacute;alisations</a>                    ·
+                <a href="#">A propos</a>                    ·                   ·
+                <a href="<?php echo $this->url('personnel/default', array('controller' => 'contact', 'action' => 'contact'));?>">Contact</a>
+            </p>            
+        </div>
+
+        <div class="footer-center">
+            <div class="">
+                <p> <a href="#" data-placement="top"
+                       title="B.P. 2861 Yaound&eacute; Messa-Cameroun"><span class="glyphicon glyphicon-home">&nbsp;&nbsp;B.P.
+                            2861 Yaound&eacute Messa-Cameroun;</span></a></p>
+            </div>
+            <div>
+                <p><a href="provincialcam@yahoo.fr" data-placement="top"
+                      title="provincialcam@yahoo.fr"><span class="glyphicon glyphicon-envelope">&nbsp;&nbsp;provincialcam@yahoo.fr</span></a></p>
+            </div>
+            <div>
+                <p><a href="#" data-placement="top"
+                      title="T&eacute;l&eacute;phone"><span class="glyphicon glyphicon-phone">&nbsp;&nbsp;Tél.fixe (237) 243 59 52 46</span></a></p>
+            </div>
+            <div>
+                <p><a href="#" data-placement="top"
+                      title="T&eacute;l&eacute;phone mobile "><span class="glyphicon glyphicon-phone-alt">&nbsp;&nbsp;</span>
+                    </a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>A propos du CICIM-AOC</span>
+            <p class="text-info">Missionnaires du Coeur Immaculé de Marie - CICM</p>
+            <div class="footer-icons">
+                <a href="https://facebook.com/"><i><span class="glyphicon"><img style="height: 35px; width: 35px" src="<?php echo $this->basePath('img/icons/social-icons/skype.png'); ?>"></span></i></a>
+                <a href="#"><i><span class="glyphicon"><img style="height: 35px; width: 35px" src="<?php echo $this->basePath('img/icons/social-icons/youtube.png'); ?>"></span></i></a>
+                <a href="#"><i><span class="glyphicon"><img style="height: 35px; width: 35px" src="<?php echo $this->basePath('img/icons/social-icons/twitter.png'); ?>"></span></i></a>
+                <a href="#"><i><span class="glyphicon"><img style="height: 35px; width: 35px" src="<?php echo $this->basePath('img/icons/social-icons/facebook.png'); ?>"></span></i></a>
+                <a href="#"><i><span class="glyphicon"><img style="height: 35px; width: 35px" src="<?php echo $this->basePath('img/icons/social-icons/evernote.png'); ?>"></span></i></a>
+                <a href="#"><i><span class="glyphicon"><img style="height: 35px; width: 35px" src="<?php echo $this->basePath('img/icons/social-icons/linkedin.png'); ?>"></span></i></a>
+                <a href="#"><i><span class="glyphicon"><img style="height: 35px; width: 35px" src="<?php echo $this->basePath('img/icons/social-icons/google.png'); ?>"></span></i></a>
+            </div>
+        </div>
+    </div>
+</div>

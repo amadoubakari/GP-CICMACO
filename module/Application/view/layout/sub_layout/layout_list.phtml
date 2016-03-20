@@ -1,0 +1,51 @@
+
+<div style="background-color: white; padding-left: 5px; padding-top: 10px; margin-top: 2px; padding-right: 5px">
+    <div class="row">
+        <div class="col-lg-2">
+            <img src="<?php 
+            session_start();
+            echo $this->basePath('documents/photos/' . $personnel['photo']); ?>" class="img-thumbnail" style="width: 100px;height: 100px" alt="Cinque Terre">
+        </div>
+        <div class="col-lg-7">
+            <label>Nom :</label>&nbsp;<?php echo $personnel['nom'] ?><br>
+            <label>Prénom : </label>&nbsp;<?php echo $this->$personnel['prenom'] ?><br>
+            <label>Age :</label>&nbsp;<?php echo $this->$personnel['sexe'] ?><br>
+            <label>Sexe : </label>&nbsp;27 ans<br>
+        </div>
+    </div> 
+    <article>
+        <div class="post-quote">
+            <blockquote>
+                <i class="icon-quote-left"></i> Lorem ipsum dolor sit amet, ei quod constituto qui. Summo labores expetendis ad quo, lorem luptatum et vis. No qui vidisse signiferumque...
+            </blockquote>
+        </div>
+        <div class="bottom-article">
+            <ul class="meta-post">
+                <li><i class="icon-calendar"></i><a href="#" data-toggle="modal" data-target="#myModal"> Details</a></li>
+                <li><i class="icon-user"></i><a href="#"> Anniversaire</a></li>
+                <li><i class="icon-folder-open"></i><a href="#"> SMS</a></li>
+                <li><i class="icon-comments"></i><a href="#">Commentaires</a></li>
+            </ul>
+        </div>
+    </article>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Amadou Bakari</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="<?php echo $this->basePath('img/logo/marie.png'); ?>" width="500"
+                        height="500"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="">Download</button>
+            </div>
+        </div>
+    </div>
+</div>

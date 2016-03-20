@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<meta charset="UTF-8">
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logo/marie.png'))
+        ->prependStylesheet($this->basePath('customer/date/css/style.css'))
+        ->prependStylesheet($this->basePath('customer/date/css/bootstrap-select'))
+        ->prependStylesheet($this->basePath('customer/date/css/bootstrap-select.min.css'))
+        ->prependStylesheet($this->basePath('customer/date/css/jquery.datetimepicker.css'))
+        ->prependStylesheet('http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
+?>
+
+<!-- Scripts -->
+<?php
+echo $this->headScript()
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.full.min.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.full.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.min.js'))
+        ->prependFile($this->basePath('customer/date/js/bootstrap-select.js'))
+;
+?>
+<div>
+    <div>
+        <form class="form-horizontal col-lg-12" method="POST" enctype="multipart/form-data" style="border: 2px solid #CBE6F4;background-color: white">
+            <br/>
+            <p class="text-center text-primary" style="font-family: serif; font-size: 14px; font-weight: bold">Informations personnel </p>
+            <hr>
+            <div class="form-group">
+                <label for="service" class="col-sm-3 control-label">En service dans:</label>
+                <div class="col-sm-8">
+                    <select class="form-control col-sm-8" id="service" name="service" title="Service" required="true">
+                        <option value="<?php echo $personnels->getIdService(); ?>" style="color: deepskyblue"><?php echo $personnels->getIdService(); ?></option>
+                        <option value="admin" style="color: deepskyblue">&nbsp; Administrateur</option>
+                        <option value="commission" style="color: deepskyblue">&nbsp; Commission</option>
+                        <option value="paroisse" style="color: deepskyblue">&nbsp; Paroisse</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pays" class="col-sm-3 control-label">Pays:</label>
+                <div class="col-sm-5">
+                    <select class="form-control col-sm-8" id="pays" name="pays" title="Pays" required="true">
+                        <option value="<?php echo $personnels->getIdPays()->getIdPays(); ?>" style="color: deepskyblue"><?php echo $personnels->getIdPays()->getNom(); ?></option>
+                        <?php
+                        foreach ($pays as $pay) {
+                            echo '<option value="' . $pay->getIdPays() . '" style="color: deepskyblue"> &nbsp;' . $pay->getNom() . '   (' . $pay->getCodeTelephone(). ' )</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nom" class="col-sm-3 control-label">Nom :</label>
+                <div class="col-sm-8">
+                    <input type="text" name="nom" class="form-control" id="nom" title="Nom" placeholder="nom" required="true" value="<?php echo $personnels->getNom(); ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="prenom" class="col-sm-3 control-label">Prénom :</label>
+                <div class="col-sm-8">
+                    <input type="text"  class="form-control" id="prenom" name="prenom" placeholder="prénom" title="Prénom" value="<?php echo $personnels->getPrenom(); ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sexe" class="col-sm-3 control-label">Sexe:</label>
+                <div class="col-sm-5">
+                    <select class="form-control col-sm-8" id="sexe" name="sexe" title="Sexe">
+                        <option value="<?php echo $personnels->getSexe(); ?>" style="color: deepskyblue"><?php echo $personnels->getSexe(); ?></option>
+                        <option value="1" style="color: deepskyblue">&nbsp;Masculin</option>
+                        <option value="2" style="color: deepskyblue">&nbsp;Féminin</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateDeNaissance" class="col-sm-3 control-label">Date de naissance :</label>
+                <div class='input-group date col-lg-7' >
+                    <input type='date' class="form-control"  id='dateDeNaissance' name="dateDeNaissance"  placeholder="Date de naissance" style="margin-left: 3px" title="Date de naissance" value="<?php echo $personnels->getDateDeNaissance()->format('d-m-Y'); ?>"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lieuDeNaissance" class="col-sm-3 control-label">Lieu de naissance :</label>
+                <div class="col-sm-8">
+                    <input type="text"  class="form-control" name="lieuDeNaissance" id="lieuDeNaissance" placeholder="Lieu de naissance" value="<?php echo $personnels->getLieuDeNaissance(); ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="groupeEthnique" class="col-sm-3 control-label">Groupe éthnique :</label>
+                <div class="col-sm-8">
+                    <input type="text"  class="form-control" name="groupeEthnique" id="groupeEthnique" placeholder="groupe éthnique" title="Groupe éthnique" value="<?php echo $personnels->getGroupeEthnique(); ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="langueMaternelle" class="col-sm-3 control-label"> Langue Maternelle :</label>
+                <div class="col-sm-8">
+                    <input type="text"  class="form-control" name="langueMaternelle" id="langueMaternelle" placeholder="Langue Maternelle" title="Langue Maternelle" value="<?php echo $personnels->getLangueMaternelle(); ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="domicile" class="col-sm-3 control-label"> Domicile :</label>
+                <div class="col-sm-8">
+                    <input type="text"  class="form-control" name="domicile" id="domicile"  value="<?php echo $personnels->getDomicile(); ?>" placeholder="domicile" title="Domicile">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="stPatron" class="col-sm-3 control-label">Saint Patron :</label>
+                <div class='input-group date col-lg-7' >
+                    <input type='date' class="form-control"  id='stPatron' name="stPatron"  placeholder="Date de saint patron" value="<?php echo $personnels->getStPatron()->format('d-m-Y'); ?>" style="margin-left: 3px" title="Date de saint patron"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Adresse email :</label>
+                <div class="col-sm-8">
+                    <input type="text"  class="form-control" name="email" id="email" placeholder="Adresse email" title="Adresse email" value="<?php echo $personnels->getEmail(); ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="telephone" class="col-sm-3 control-label">Téléphone :</label>
+                <div class="col-sm-8">
+                    <input type="text"  class="form-control" name="telephone" id="telephone" placeholder="Téléphone" title="Téléphone" value="<?php echo $personnels->getTelephone(); ?>">
+                </div>
+            </div>
+            <div class=" form-group">
+                <label for="photo" class="col-sm-3 control-label">Image :</label>
+                <div class="col-sm-8  input-group">
+                    <div class="well span4" style="">
+                        <input type="file" class="span10" name="photo" id="photo" title="Photo" value="<?php echo $personnels->getPhoto(); ?>">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateAdmission" class="col-sm-3 control-label">Date d'admission :</label>
+                <div class='input-group date col-lg-7' >
+                    <input type='datetime' class="form-control"  id='dateAdmission' name="dateAdmission"  title="Date d'admission" placeholder="date d'admission" style="margin-left: 3px" value="<?php echo $personnels->getDateAdmission()->format('d-m-Y'); ?>" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="superieur" class="col-sm-3 control-label">Encadreur :</label>
+                <div class="col-sm-8">
+                    <input type="text"  class="form-control" name="superieur" id="superieur" placeholder="Nom du supérieur" title="Supérieur" value="<?php echo $personnels->getSuperieur(); ?>">
+                </div>
+            </div>
+
+            <div>
+                <hr>
+                <p class="text-center text-primary" style="font-family: serif; font-size: 14px; font-weight: bold">Informations liées au pere  </p>
+                <hr>
+                <div class="form-group">
+                    <label for="nomPere" class="col-sm-3 control-label">Nom du père :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="nomPere" class="form-control" id="nom" title="Nom du père" placeholder="nom du père" value="<?php echo $personnels->getNomPere(); ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="originePere" class="col-sm-3 control-label">Origine du père :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="originePere" class="form-control" id="originePere" title="Origine du père" placeholder="Origine du père" value="<?php echo $personnels->getOriginPere(); ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="professionPere" class="col-sm-3 control-label">Profession :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="professionPere" class="form-control" id="professionPere" title="Profession" placeholder="Profession du père" value="<?php echo $personnels->getProfessionPere(); ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="enViePere" class="col-sm-3 control-label">Est en vie ? :</label>
+                    <div class="col-sm-8 radio">
+                        <label><input type="radio" name="enViePere" value="<?php echo $personnels->getEnViePere(); ?>" class="active">Oui</label>
+                        <label><input type="radio" name="enViePere" value="non">Non</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mariage" class="col-sm-3 control-label">Type du mariage:</label>
+                    <div class="col-sm-5">
+                        <select class="form-control col-sm-8" id="mariage" name="mariage" title="Type de mariage">
+                            <option value="<?php echo $personnels->getTypeMariage(); ?>" style="color: deepskyblue"><?php echo $personnels->getTypeMariage(); ?></option>
+                            <option value="Civil" style="color: deepskyblue">&nbsp;Civil</option>
+                            <option value="Réligieux" style="color: deepskyblue">&nbsp;Réligieux</option>
+                            <option value="Autres" style="color: deepskyblue">&nbsp;Autres</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="etatPsychologiquePere" class="col-sm-3 control-label">Etat psychologique :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="etatPsychologiquePere" class="form-control" id="etatPsychologiquePere" title="Etat psychologique du père" placeholder="Etat psychologique" value="<?php echo $personnels->getEtatPsychologiquePere(); ?>">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <hr>
+                <p class="text-center text-primary" style="font-family: serif; font-size: 14px; font-weight: bold">Informations liées à la mere </p>
+                <hr>
+                <div class="form-group">
+                    <label for="nomMere" class="col-sm-3 control-label">Nom de la mère :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="nomMere" class="form-control" id="nomMere" title="Nom de la mère" placeholder="nom de la mère" value="<?php echo $personnels->getNomMere(); ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="origineMere" class="col-sm-3 control-label">Origine de la mère :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="origineMere" class="form-control" id="origineMere" title="Origine de la mère" placeholder="Origine de la mère" value="<?php echo $personnels->getOrigineMere(); ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="professionMere" class="col-sm-3 control-label">Profession :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="professionMere" class="form-control" id="professionMere" title="Profession" placeholder="Profession de la mère" value="<?php echo $personnels->getProfessionMere(); ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="enVieMere" class="col-sm-3 control-label">Est en vie ? :</label>
+                    <div class="col-sm-8 radio">
+                        <label><input type="radio" name="enVieMere" value="<?php echo $personnels->getEnVieMere(); ?>" class="active">Oui</label>
+                        <label><input type="radio" name="enVieMere" value="non">Non</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="etatPsychologiqueMere" class="col-sm-3 control-label">Etat psychologique :</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="etatPsychologiqueMere" class="form-control" id="etatPsychologiqueMere" title="Etat psychologique de la mère" placeholder="Etat psychologique"  value="<?php echo $personnels->getEtatPsychologiqueMere(); ?>">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <hr>
+                <p class="text-center text-primary" style="font-family: serif; font-size: 14px; font-weight: bold">Attribuer un profil au personnel </p>
+                <hr>
+                <div class="form-group">
+                    <label for="profil" class="col-sm-3 control-label">Profil:</label>
+                    <div class="col-sm-5">
+                        <select class="form-control col-sm-8" id="profil" name="profil" title="Profil" required="true">
+                            <option value="<?php echo $personnels->getProfil()->getId(); ?>" style="color: deepskyblue">&nbsp;<?php echo $personnels->getProfil()->getProfilName(); ?></option>
+                            <?php
+                            foreach ($profils as $pro) {
+                                echo '<option value="' . $pro->getId() . '" style="color: deepskyblue"> &nbsp;' . $pro->getProfilName() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-sm-offset-2">
+                <div class="col-sm-2">
+                    <button type="submit" name="submit" class="btn btn-default "><span class="glyphicon
+                                                                                       glyphicon-ok-sign"></span>Modifier</button>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-sm-2" style="margin-left: 20px">
+                    <button type="cancel" name="cancel" class="btn btn-default " >Annuler</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        $('.selectpicker').selectpicker();
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $('#dateDeNaissance').datetimepicker({
+                locale: 'ru',
+                lang: 'en',
+                //timepicker: false,
+                format: 'Y-m-d',
+                //formatDate: 'Y/m/d',
+                // minDate: '-1970/01/02', // yesterday is minimum date
+                //maxDate: '+1970/01/02' // and tommorow is maximum date calendar
+            });
+            $('#stPatron').datetimepicker({
+                locale: 'ru',
+                lang: 'en',
+                //timepicker: false,
+                format: 'Y-m-d',
+                //formatDate: 'Y/m/d',
+                // minDate: '-1970/01/02', // yesterday is minimum date
+                //maxDate: '+1970/01/02' // and tommorow is maximum date calendar
+            });
+            $('#dateAdmission').datetimepicker({
+                locale: 'ru',
+                lang: 'en',
+                //timepicker: false,
+                format: 'Y-m-d',
+                //formatDate: 'Y/m/d',
+                // minDate: '-1970/01/02', // yesterday is minimum date
+                //maxDate: '+1970/01/02' // and tommorow is maximum date calendar
+            });
+        });
+    </script>
+</div>
+

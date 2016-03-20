@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<meta charset="UTF-8">
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logo/marie.png'))
+        ->prependStylesheet($this->basePath('customer/date/css/style.css'))
+        ->prependStylesheet($this->basePath('customer/date/css/bootstrap-select'))
+        ->prependStylesheet($this->basePath('customer/date/css/bootstrap-select.min.css'))
+        ->prependStylesheet($this->basePath('customer/date/css/jquery.datetimepicker.css'))
+        ->prependStylesheet('http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
+?>
+
+<!-- Scripts -->
+<?php
+echo $this->headScript()
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.full.min.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.full.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.min.js'))
+        ->prependFile($this->basePath('customer/date/js/bootstrap-select.js'))
+;
+?>
+<div>
+    <div>
+        <form class="form-horizontal col-lg-12" method="POST" enctype="multipart/form-data" style="border: 2px solid #CBE6F4;background-color: white">
+            <h4 class="text-center blue">
+                Nouveau document de M./Mme <?php echo '<b class="text-warning">'.$personnel->getNom().' '.$personnel->getPrenom().'</b>'; ?>
+            </h4>
+            <hr>
+            <div class="form-group">
+                <label for="description" class="col-sm-3 control-label">Description :</label>
+                <div class='col-sm-8' >
+                    <input type='text' class="form-control" value="<?php echo $document->getDescription(); ?>" id='description' name="description"  title="description" placeholder="description" style="margin-left: 3px"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="type" class="col-sm-3 control-label">Nature:</label>
+                <div class="col-sm-8">
+                    <select class="form-control  col-sm-4" id="type" name="type" title="type" required="true">
+                        <option value="" style="color: deepskyblue">-- Sélectionner le type de document --</option>
+                        <option value="acte_de_naissance" style="color: deepskyblue" selected="selected">&nbsp; Acte de naissance</option>
+                        <option value="carte_de_bapteme" style="color: deepskyblue">&nbsp; Carte de baptême</option>
+                        <option value="CNI" style="color: deepskyblue">&nbsp; Carte Nationale d'Identité</option>
+                        <option value="passeport" style="color: deepskyblue">&nbsp; Passeport</option>
+                        <option value="Diplomes" style="color: deepskyblue" >&nbsp; Diplômes Officiels</option>                       
+                        <option value="Autres" style="color: deepskyblue">&nbsp; Autres</option>
+                    </select>
+                </div>
+            </div>
+            <div class=" form-group">
+                <label for="photo" class="col-sm-3 control-label">&nbsp;Document</label>
+                <div class="col-sm-4  input-group">
+                    <div class="well span4" style="">
+                        <input type="file" class="span10" name="photo" id="photo" title="Photo">
+                    </div>
+                    <?php echo '<p class="text-danger">' . $errorDocument . '</p>'; ?>
+                </div>
+            </div>
+            <div class="row col-sm-offset-2">
+                <div class="col-sm-2">
+                    <button type="submit" name="submit" class="btn btn-default ">Enregistrer</button>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-sm-2" style="margin-left: 20px">
+                    <button type="cancel" name="cancel" class="btn btn-default " >Annuler</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+

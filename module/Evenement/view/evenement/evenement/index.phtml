@@ -1,0 +1,104 @@
+<div>
+    <?php
+    foreach ($evenements as $event) {
+
+        echo '<div style="background-color: white; padding-left: 5px; padding-top: 10px; margin-top: 2px; padding-right: 5px">';
+        echo '<div class="row">';
+        echo '<div class = "col-lg-2">';
+        echo '<img src = "' . $this->basePath('documents/photos/' . $event->getIdPersonnel()->getPhoto()) . '" class = "img-thumbnail" style = "width: 100px;height: 100px" alt = "Cinque Terre"></div>';
+        echo '<div class = "col-lg-7">';
+        echo '<label> Evénement : </label>&nbsp;' . $event->getType() . '<br>';
+        echo '<label> Description: </label>&nbsp;' . $event->getDescription() . '<br>';
+        echo '<label> Date Debut : </label>&nbsp;' . $event->getDateDebut()->format('d/m/Y') . '<br>';
+        echo '<label> Date Fin : </label>&nbsp;' . $event->getDateFin()->format('d/m/Y') . '<br></div></div>';
+        echo '<article>
+        <div class="bottom-article">';
+
+
+
+
+
+
+        echo '<ul class="meta-post">
+                <li><i class="icon-calendar"></i><a href="#" data-toggle="modal" data-target="#myModal"> Details</a></li>
+                <li><i class="icon-user"></i><a href="#"> Anniversaire</a></li>
+                <li><i class="icon-folder-open"></i><a href="#"> SMS</a></li>
+                <li><i class="icon-comments"></i><a href="#">Commentaires</a></li>
+            </ul>
+        </div>
+    </article>
+</div>';
+
+
+
+
+        echo '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
+        echo '<div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Amadou Bakari</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="' . $this->basePath('documents/photos/' . $personnel['photo']) . '" width="500"
+                        height="500"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="">Download</button>
+            </div>
+        </div>
+    </div>
+</div>';
+    }
+    ?>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav>
+    <ul class="pagination pagination-sm">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+

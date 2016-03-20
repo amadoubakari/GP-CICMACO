@@ -1,0 +1,45 @@
+<?php
+echo $this->doctype();
+?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('CICM-ACO' . $this->translate(''))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logo/marie.png'))
+                ->prependStylesheet($this->basePath('bootstrap/css/style.css'))
+                ->prependStylesheet($this->basePath('bootstrap/css/bootstrap-theme.min.css'))
+                ->prependStylesheet($this->basePath('bootstrap/css/bootstrap.min.css'))
+                
+        ?>
+
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath('bootstrap/js/bootstrap.min.js'))
+                ->prependFile($this->basePath('bootstrap/js/jquery.min.js'))
+                ->prependFile($this->basePath('js/jQuery1.12.0.js'))
+                ->prependFile($this->basePath('bootstrap/js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath('bootstrap/js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
+        ?>
+
+    </head>
+    <body>
+        <br><br><br><br>
+        <div class="container">
+            <?php echo $this->content;
+            ?>
+        </div>
+    </body>
+</html>
+ 

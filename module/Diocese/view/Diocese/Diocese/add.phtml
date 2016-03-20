@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<meta charset="UTF-8">
+<?php
+echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logo/marie.png'))
+        ->prependStylesheet($this->basePath('customer/date/css/style.css'))
+        ->prependStylesheet($this->basePath('customer/date/css/bootstrap-select'))
+        ->prependStylesheet($this->basePath('customer/date/css/bootstrap-select.min.css'))
+        ->prependStylesheet($this->basePath('customer/date/css/jquery.datetimepicker.css'))
+        ->prependStylesheet('http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
+?>
+
+<!-- Scripts -->
+<?php
+echo $this->headScript()
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.full.min.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.full.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.js'))
+        ->prependFile($this->basePath('customer/date/js/jquery.datetimepicker.min.js'))
+        ->prependFile($this->basePath('customer/date/js/bootstrap-select.js'))
+;
+?>
+<div>
+    <div>
+        <form class="form-horizontal col-lg-12" method="POST" enctype="multipart/form-data" style="border: 2px solid #CBE6F4;background-color: white">
+            <br/>
+
+
+            <div class="form-group">
+                <label for="nom" class="col-sm-3 control-label">Nom :</label>
+                <div class="col-sm-8">
+                    <input type="text" name="nom" class="form-control" id="nom" title="Nom" placeholder="Nom" required="false">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idsecteur" class="col-sm-3 control-label">Secteur :</label>
+                <div class="col-sm-8">
+                    <select class="form-control col-sm-8" id="idsecteur" name=idsecteur" title="idsecteur" required="true" >
+                        <option value="cameroun" selected="selected" style="color: deepskyblue" >Cameroun</option>
+                        <option value="senegal"  style="color: deepskyblue">Senegal</option>
+                    </select>
+                </div>
+            </div>
+            <!--             <div class="form-group">
+                            <label for="idsecteur" class="col-sm-3 control-label">Secteur:</label>
+                            <div class="col-sm-8">
+            <?php
+// Définition du tableau de couleurs
+            $secteurs = array(
+                'cameroun' => 'cameroun',
+                'senegal' => 'senegal',
+            );
+// Variable qui ajoutera l'attribut selected de la liste déroulante
+            $selected = '';
+// Parcours du tableau
+            echo '<select name="idsecteur" class="col-sm-8" >', "n";
+            foreach ($secteurs as $secteur => $nomsecteur) {
+// Test de la couleur
+                if ($nomsecteur === 'cameroun') {
+                    $selected = ' selected="selected"';
+                }
+// Affichage de la ligne
+                echo "\t", '<option value="', $secteur, '"', $selected, ' >', $nomsecteur, '</option>', "\n";
+// Remise à zéro de $selected
+                $selected = '';
+            }
+            echo '</select>', "\n";
+            ?>
+            
+                                </div>
+                        </div>-->
+
+
+            <div class="form-group">
+                <label for="recteur" class="col-sm-3 control-label">Eveque:</label>
+                <div class="col-sm-8">
+                    <input type="text" name="recteur" class="form-control" id="recteur" title="recteur" placeholder="recteur" required="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="econome" class="col-sm-3 control-label">Econome:</label>
+                <div class="col-sm-8">
+                    <input type="text" name="econome" class="form-control" id="econome" title="econome" placeholder="econome" required="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="adresse" class="col-sm-3 control-label">Adresse :</label>
+                <div class="col-sm-8">
+                    <input type="text" name="adresse" class="form-control" id="adresse" title="adresse" placeholder="adresse" required="false">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">email :</label>
+                <div class="col-sm-8">
+                    <input type="text" name="email" class="form-control" id="email" title="email" placeholder="email" required="false">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="telephone" class="col-sm-3 control-label">telephone :</label>
+                <div class="col-sm-8">
+                    <input type="text" name="telephone" class="form-control" id="telephone" title="telephone" placeholder="telephone" required="false">
+                </div>
+            </div>
+            <div class="row col-sm-offset-2">
+                <div class="col-sm-2">
+                    <button type="submit" name="submit" class="btn btn-default ">Enregistrer</button>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-sm-2" style="margin-left: 20px">
+                    <button type="cancel" name="cancel" class="btn btn-default " >Annuler</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
