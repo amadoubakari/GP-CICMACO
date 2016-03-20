@@ -30,7 +30,6 @@ class PersonnelController extends AbstractActionController {
         $personnel = new Personnel();
         $request = $this->getRequest();
         if ($request->isPost()) {
-
             $personnel->setTypePersonnel("Pretre");
             $personnel->setIdService($request->getPost('service'));
             $personnel->setEcole("");
@@ -65,7 +64,6 @@ class PersonnelController extends AbstractActionController {
             $personnel->setLogin($request->getPost('nom'));
             $personnel->setPassword($request->getPost('nom'));
 
-
             //Informations liées au père de l'étudiant
             $personnel->setNomPere($request->getPost('nomPere'));
             $personnel->setProfessionPere($request->getPost('professionPere'));
@@ -74,8 +72,6 @@ class PersonnelController extends AbstractActionController {
             $personnel->setProfessionPere($request->getPost('professionPere'));
             $personnel->setEtatPsychologiquePere($request->getPost('etatPsychologiquePere'));
             $personnel->setTypeMariage($request->getPost('mariage'));
-
-
 
             //Informations relatives à la mère
             $personnel->setNomMere($request->getPost('nomMere'));
