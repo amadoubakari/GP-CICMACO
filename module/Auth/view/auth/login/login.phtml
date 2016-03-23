@@ -14,10 +14,10 @@ echo $this->headScript()
                  style="width: 120px; height: 150px; margin-top: 15px" /><br><br>
         </div>
         <div>
-            <input type="text" value="<?php echo $login; ?>" class="form-control" name="login" placeholder="login" required="true" autofocus="" />
+            <input type="text" value="<?php echo $login; ?>" id="login" class="form-control" name="login" placeholder="login" required="true" autofocus="" />
         </div><br>  
         <div>
-            <input type="password" value="<?php echo $password; ?>" class="form-control" name="password" placeholder="Password" required="true"/> 
+            <input type="password" value="" id="password" class="form-control" name="password" placeholder="Password" required="true"/> 
         </div>  
         <div>
             <label class="checkbox">
@@ -42,7 +42,10 @@ echo $this->headScript()
             function() {
                 $('#send').mousedown(
                         function() {
-                            $('#loader').append('<img src="<?php echo $this->basePath('img/loader.gif'); ?>">').fadeIn('');
+                            if ($('#login').val() !== "" && $('#password').val() !== "") {
+                                $('#loader').append('<img src="<?php echo $this->basePath('img/ajax-loader/connection-loader.gif'); ?>">').fadeIn('fast', 0.2);
+                            }
+
                         });
             }
     );

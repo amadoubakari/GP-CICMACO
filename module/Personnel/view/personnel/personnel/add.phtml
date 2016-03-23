@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+    To change this license header, choose License Headers in Project Properties.
+    To change this template file, choose Tools | Templates
+    and open the template in the editor.
 -->
 
 <meta charset="UTF-8">
@@ -49,7 +49,7 @@ echo $this->headScript()
                         <option value="" style="color: deepskyblue">-- Sélectionner votre Pays --</option>
                         <?php
                         foreach ($pays as $pay) {
-                            echo '<option value="' . $pay->getIdPays() . '" style="color: deepskyblue"> &nbsp;' . $pay->getNom() . '   (' . $pay->getCodeTelephone(). ' )</option>';
+                            echo '<option value="' . $pay->getIdPays() . '" style="color: deepskyblue"> &nbsp;' . $pay->getNom() . '   (' . $pay->getCodeTelephone() . ' )</option>';
                         }
                         ?>
                     </select>
@@ -135,7 +135,7 @@ echo $this->headScript()
                 </div>
             </div>
             <div>
-                <?php echo $msgEmail;?>
+                <?php echo $msgEmail; ?>
             </div>
             <div class="form-group">
                 <label for="telephone" class="col-sm-3 control-label">Téléphone :</label>
@@ -155,7 +155,7 @@ echo $this->headScript()
                 <label for="dateAdmission" class="col-sm-3 control-label">Date d'admission :</label>
                 <div class='input-group date col-lg-7' >
                     <input type='datetime' class="form-control"  id='dateAdmission' name="dateAdmission"  title="Date d'admission" placeholder="date d'admission" style="margin-left: 3px"
-                            value="<?php
+                           value="<?php
                            if ($personnel->getDateAdmission() !== NULL) {
                                echo $personnel->getDateAdmission()->format('d-m-Y');
                            }

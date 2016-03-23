@@ -36,14 +36,14 @@ class LoginController extends AbstractActionController {
         $password = NULL;
         if ($request->isPost()) {
             //***************************************
-            $message = new Message();
-            $message->addTo('amadou_bakari@yahoo.fr')
-                    ->addFrom('amadoubakari1992@gmail.com')
-                    ->setSubject('Greetings and Salutations!')
-                    ->setBody("Sorry, I'm going to be late today!");
-
-            $transport = new Sendmail();
-            $transport->send($message);
+//            $message = new Message();
+//            $message->addTo('amadou_bakari@yahoo.fr')
+//                    ->addFrom('amadoubakari1992@gmail.com')
+//                    ->setSubject('Greetings and Salutations!')
+//                    ->setBody("Sorry, I'm going to be late today!");
+//
+//            $transport = new Sendmail();
+//            $transport->send($message);
             //***************************************
             $login = $request->getPost('login');
             $password = md5($request->getPost('password'));
@@ -56,6 +56,10 @@ class LoginController extends AbstractActionController {
                 $_SESSION['profil'] = $results['profil'];
                 $_SESSION['evenements'] = $results['evenements'];
                 $_SESSION['connected'] = TRUE;
+                if($rememberMe==='remember-me'){
+                    $_COOKIE['login'] = $login;
+                    $_COOKIE['password'] = $request->getPost('password');
+                }
                 return $this->redirect()->toRoute('personnel/default', array('controller' => 'personnel', 'action' => 'list'));
             } else {
                 $msg = "Votre login ou mot de passe est incorrect !!!";
