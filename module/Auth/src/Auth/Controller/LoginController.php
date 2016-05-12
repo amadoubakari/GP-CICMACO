@@ -20,7 +20,8 @@ namespace Auth\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Mail\Message;
-use Zend\Mail\Transport\Sendmail;
+use Zend\Mail\Transport\Smtp as SmtpTransport;
+use Zend\Mail\Transport\SmtpOptions;
 
 session_start();
 
@@ -36,14 +37,6 @@ class LoginController extends AbstractActionController {
         $password = NULL;
         if ($request->isPost()) {
             //***************************************
-//            $message = new Message();
-//            $message->addTo('amadou_bakari@yahoo.fr')
-//                    ->addFrom('amadoubakari1992@gmail.com')
-//                    ->setSubject('Greetings and Salutations!')
-//                    ->setBody("Sorry, I'm going to be late today!");
-//
-//            $transport = new Sendmail();
-//            $transport->send($message);
             //***************************************
             $login = $request->getPost('login');
             $password = md5($request->getPost('password'));
@@ -52,13 +45,13 @@ class LoginController extends AbstractActionController {
             $results = $authService->authentification($login, $password, $rememberMe);
             $personnel = $results['personnel'];
             if ($personnel != NULL) {
+                //$this->sendConfirmationEmail();
                 $_SESSION['personnel'] = $personnel;
                 $_SESSION['profil'] = $results['profil'];
                 $_SESSION['evenements'] = $results['evenements'];
                 $_SESSION['connected'] = TRUE;
-                if($rememberMe==='remember-me'){
+                if ($rememberMe === 'remember-me') {
                     $_COOKIE['login'] = $login;
-                    $_COOKIE['password'] = $request->getPost('password');
                 }
                 return $this->redirect()->toRoute('personnel/default', array('controller' => 'personnel', 'action' => 'list'));
             } else {
@@ -70,7 +63,9 @@ class LoginController extends AbstractActionController {
                 array('msg' => $msg,
             'evenements' => $evenements,
             'login' => $login,
-            'password' => $password));
+            'password' => $password,
+                //'rememberMe' => $rememberMe
+        ));
     }
 
     public function logoutAction() {
@@ -101,6 +96,18 @@ class LoginController extends AbstractActionController {
         }
         return new ViewModel(
                 array());
+    }
+
+    public function sendConfirmationEmail() {
+        // $view = $this->getServiceLocator()->get('View');
+        $transport = $this->getServiceLocator()->get('mail.transport');
+        $message = new Message();
+        $this->getRequest()->getServer();  //Server vars
+        $message->addTo("amadoubakari1992@gmail.com")
+                ->addFrom('amadou_bakari@yahoo.fr')
+                ->setSubject('Please, confirm your registration!')
+                ->setBody("Please, click the link to confirm your registration");
+        $transport->send($message);
     }
 
 }

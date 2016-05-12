@@ -59,7 +59,7 @@ echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.micros
                                 alert("Je ne suis pas malade");
                             },
                             beforeSend: function() {
-                                $('#loading').append('<img src="<?php echo $this->basePath('img/loader.gif'); ?>">').fadeIn('');
+                                $('#loading').append('<img src="<?php echo $this->basePath('img/ajax-loader/event-loader.gif'); ?>">').fadeIn('');
                             },
                             success: function(reponse) {
                                 $.each(reponse, function(attribut, value) {

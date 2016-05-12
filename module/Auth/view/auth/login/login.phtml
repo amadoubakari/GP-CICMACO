@@ -22,7 +22,8 @@ echo $this->headScript()
         <div>
             <label class="checkbox">
                 <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe" style="margin-left: 5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remember me
-            </label> 
+            </label>
+            <a href="#" data-toggle="modal" data-target="#reset-password-form">Mot de passe oublié?</a>
         </div>
         <div class="form-group">
             <label class="col-md-4 control-label"></label>
@@ -36,6 +37,32 @@ echo $this->headScript()
             <p class="text-danger"> <?php echo $msg; ?></p>
         </div><br><br>
     </form>
+</div>
+
+<!-- Formulaire pour la resstauration du mot de passe -->
+<div class="modal fade" id="reset-password-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal col-²lg-12" method="POST" enctype="multipart/form-data" style="border: 2px solid #CBE6F4;background-color: white">
+                <div>
+                    <br/>
+                    <p class="text-center text-primary" style="font-family: serif; font-size: 14px; font-weight: bold">Restitution du mot de passe </p>
+                    <hr>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">Email :</label>
+                        <div class="col-sm-8">
+                            <input type="text"  class="form-control"  name="email" id="email" placeholder="Mettez votre adresse email">
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" type="button" class="btn btn-primary">Envoyer</a>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>               
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <script>
     $(document).ready(

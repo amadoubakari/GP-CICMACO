@@ -7,12 +7,16 @@
  */
 
 namespace Auth;
+
 /**
  * Description of Module
  *
  * @author AMADOU BAKARI
  */
-use Zend\ModuleManager\ModuleManager;
+// Add this for SMTP transport
+use Zend\ServiceManager\ServiceManager;
+use Zend\Mail\Transport\Smtp;
+use Zend\Mail\Transport\SmtpOptions;
 
 class Module {
 
@@ -30,4 +34,20 @@ class Module {
             ),
         );
     }
+
+    public function getServiceConfig() {
+        return array(
+            'factories' => array(
+                // Add this for SMTP transport
+                // ToDo move it ot a separate module CsnMail
+                'mail.transport' => function (ServiceManager $serviceManager) {
+            $config = $serviceManager->get('Config');
+            $transport = new Smtp();
+            $transport->setOptions(new SmtpOptions($config['mail']['transport']['options']));
+            return $transport;
+        },
+            )
+        );
+    }
+
 }
